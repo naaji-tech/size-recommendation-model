@@ -1,0 +1,7 @@
+# FastAPI & Server Dependencies
+fastapi
+uvicorn
+mangum
+gunicorn
+python-multipart
+
