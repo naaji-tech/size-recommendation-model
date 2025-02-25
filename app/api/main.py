@@ -37,6 +37,7 @@ class GarmentSize(BaseModel):
 class RequestBody(BaseModel):
     body_measurements: BodyMeasurements
     garment_size_and_measurements: GarmentSize
+    measurement_weight: GarmentMeasurements
 
 
 app = FastAPI()
@@ -57,8 +58,9 @@ async def size_recommend(request_body: RequestBody):
     try:
         user_measurements = request_body.body_measurements.model_dump()
         garment_sizes = request_body.garment_size_and_measurements.model_dump()
+        measurement_weight = request_body.measurement_weight.model_dump()
 
-        rec_size = recommend_size(user_measurements, garment_sizes)
+        rec_size = recommend_size(user_measurements, garment_sizes, measurement_weight)
 
         return {"recommend_size": rec_size}
 

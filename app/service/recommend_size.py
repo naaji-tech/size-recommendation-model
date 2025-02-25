@@ -1,7 +1,7 @@
 from app.service.compute_fit_score import compute_fit_score
 
 
-def recommend_size(user_measurements: dict, garment_sizes: dict) -> str:
+def recommend_size(user_measurements: dict, garment_sizes: dict, measurement_weight: dict) -> str:
     """
     Recommend the best garment size based on the lowest fit score.
 
@@ -19,7 +19,7 @@ def recommend_size(user_measurements: dict, garment_sizes: dict) -> str:
     # Evaluate each garment size
     for size, meas in garment_sizes.items():
         print(f"\nSize {size} measurements: {meas}")
-        score = compute_fit_score(user_measurements, meas)
+        score = compute_fit_score(user_measurements, meas, measurement_weight)
         # Debug print to show score per size
         print(f"Size {size} has a fit score of {score:.2f}\n")
         if score < best_score:

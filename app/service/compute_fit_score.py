@@ -1,7 +1,7 @@
-from app.utils.config import BODY_GARMENT_SIZE_MAP, CORE_MEASUREMENTS, WEIGHTS
+from app.utils.config import BODY_GARMENT_SIZE_MAP, CORE_MEASUREMENTS
 
 
-def compute_fit_score(user_meas: dict, garment_meas: dict) -> float:
+def compute_fit_score(user_meas: dict, garment_meas: dict, weights: dict) -> float:
     """
     Compute a weighted fit score between user and garment measurements.
     Lower score indicates a better fit.
@@ -26,6 +26,6 @@ def compute_fit_score(user_meas: dict, garment_meas: dict) -> float:
                 score = 0.0
             diff = abs(garment_meas[val] - user_meas[key])
             print(f"Diff: {diff}")
-            score += WEIGHTS[val] * diff
+            score += weights[val] * diff
 
     return score
