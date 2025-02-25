@@ -15,6 +15,7 @@ def compute_fit_score(user_meas: dict, garment_meas: dict, weights: dict) -> flo
     """
 
     score = float("inf")
+    score_flag = False
 
     for key, val in BODY_GARMENT_SIZE_MAP.items():
         if key in user_meas and val in garment_meas and garment_meas[val] != 0:
@@ -22,7 +23,8 @@ def compute_fit_score(user_meas: dict, garment_meas: dict, weights: dict) -> flo
             print(f"Garment measurement: {val} = {garment_meas[val]}")
             if garment_meas[val] - user_meas[key] < 0 and key in CORE_MEASUREMENTS:
                 return float("inf")
-            else:
+            elif score_flag is False:
+                score_flag = True
                 score = 0.0
             diff = abs(garment_meas[val] - user_meas[key])
             print(f"Diff: {diff}")

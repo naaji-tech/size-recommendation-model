@@ -53,7 +53,7 @@ async def size_recommend(request_body: RequestBody):
     - request_body: RequestBody: Request body containing body measurements and garment sizes
 
     returns:
-    - dict
+    - dict: recommended size
     """
     try:
         user_measurements = request_body.body_measurements.model_dump()
