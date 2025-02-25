@@ -2,7 +2,7 @@ import traceback
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from app.service import recommend_size
+from app.service.recommend_size import recommend_size
 
 
 # === define the request and response models ===
@@ -49,10 +49,12 @@ async def size_recommend(request_body: RequestBody):
     API URL end point to size recommendation based on body and garment measurements
     """
     try:
-        user_measurements = request_body.body_measurements.dict()
-        garment_sizes = request_body.garment_size_and_measurements.dict()
+        user_measurements = request_body.body_measurements.model_dump()
+        garment_sizes = request_body.garment_size_and_measurements.model_dump()
 
-        return {"recommend_size": recommend_size(user_measurements, garment_sizes)}
+        rec_size = recommend_size(user_measurements, garment_sizes)
+
+        return {"recommend_size": rec_size}
 
     except Exception as e:
         print(traceback.format_exc())
