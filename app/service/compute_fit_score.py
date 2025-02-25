@@ -7,12 +7,13 @@ def compute_fit_score(user_meas: dict, garment_meas: dict) -> float:
     Lower score indicates a better fit.
 
     Parameters:
-      user_meas (dict): User measurements (e.g., chest, waist, shoulder_width, etc.)
-      garment_meas (dict): Garment measurements for a given size.
+        user_meas (dict): User measurements (e.g., chest, waist, shoulder_width, etc.)
+        garment_meas (dict): Garment measurements for a given size.
 
     Returns:
-      float: The overall fit score.
+        float: The overall fit score.
     """
+
     score = float("inf")
 
     for key, val in BODY_GARMENT_SIZE_MAP.items():

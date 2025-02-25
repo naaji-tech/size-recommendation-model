@@ -6,14 +6,12 @@ def recommend_size(user_measurements: dict, garment_sizes: dict) -> str:
     Recommend the best garment size based on the lowest fit score.
 
     Parameters:
-      user_measurements (dict): The body measurement values from the user.
-      garment_sizes (dict): A mapping of garment size (e.g., 'S', 'M', 'L') to their measurements.
+        user_measurements (dict): The body measurement values from the user.
+        garment_sizes (dict): A mapping of garment size (e.g., 'S', 'M', 'L') to their measurements.
 
     Returns:
-      str: The recommended garment size.
+        str: The recommended garment size.
     """
-    # Define weights for each measurement.
-    # Adjust these based on the importance of each measurement.
 
     best_size = None
     best_score = float("inf")
