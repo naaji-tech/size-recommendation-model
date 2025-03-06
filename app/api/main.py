@@ -21,7 +21,7 @@ class GarmentMeasurements(BaseModel):
     shoulder_width: float
     chest: float
     waist: float
-    bottom_width: float
+    bottom_circumference: float
     front_length: float
     sleeve: float
 

@@ -4,7 +4,7 @@ BODY_GARMENT_SIZE_MAP = {
     "shoulder_breadth": "shoulder_width",
     "arm_length": "sleeve_length",
     "shoulder_to_crotch_height": "front_length",
-    "hip_circumference": "bottom_width",
+    "hip_circumference": "bottom_circumference",
     "bicep_circumference": "sleeve",
 }
 
