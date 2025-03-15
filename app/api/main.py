@@ -7,22 +7,22 @@ from app.service.recommend_size import recommend_size
 
 # === define the request and response models ===
 class BodyMeasurements(BaseModel):
-    shoulder_breadth: float
-    chest_circumference: float
-    waist_circumference: float
-    hip_circumference: float
-    bicep_circumference: float
-    shoulder_to_crotch_height: float
-    arm_length: float
+    shoulderBreadth: float
+    chestCircumference: float
+    waistCircumference: float
+    hipCircumference: float
+    bicepCircumference: float
+    shoulderToCrotchHeight: float
+    armLength: float
 
 
 class GarmentMeasurements(BaseModel):
-    sleeve_length: float
-    shoulder_width: float
+    sleeveLength: float
+    shoulderWidth: float
     chest: float
     waist: float
-    bottom_circumference: float
-    front_length: float
+    bottomCircumference: float
+    frontLength: float
     sleeve: float
 
 
@@ -35,16 +35,16 @@ class GarmentSize(BaseModel):
 
 
 class RequestBody(BaseModel):
-    body_measurements: BodyMeasurements
-    garment_size_and_measurements: GarmentSize
-    measurement_weight: GarmentMeasurements
+    userMeasurements: BodyMeasurements
+    productMeasurements: GarmentSize
+    measurementsWeight: GarmentMeasurements
 
 
 app = FastAPI()
 # === define the API end point ===
 
 
-@app.post("/size-recommendation")
+@app.post("/v1/sizeRecommendations")
 async def size_recommend(request_body: RequestBody):
     """
     API URL end point to size recommendation based on body and garment measurements
@@ -56,9 +56,9 @@ async def size_recommend(request_body: RequestBody):
     - dict: recommended size
     """
     try:
-        user_measurements = request_body.body_measurements.model_dump()
-        garment_sizes = request_body.garment_size_and_measurements.model_dump()
-        measurement_weight = request_body.measurement_weight.model_dump()
+        user_measurements = request_body.userMeasurements.model_dump()
+        garment_sizes = request_body.productMeasurements.model_dump()
+        measurement_weight = request_body.measurementsWeight.model_dump()
 
         rec_size = recommend_size(user_measurements, garment_sizes, measurement_weight)
 
