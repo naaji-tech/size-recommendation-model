@@ -62,7 +62,7 @@ async def size_recommend(request_body: RequestBody):
 
         rec_size = recommend_size(user_measurements, garment_sizes, measurement_weight)
 
-        return {"recommend_size": rec_size}
+        return {"recommendSize": rec_size}
 
     except Exception as e:
         print(traceback.format_exc())
