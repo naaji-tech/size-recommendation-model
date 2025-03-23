@@ -61,6 +61,7 @@ async def size_recommend(request_body: RequestBody):
         measurement_weight = request_body.measurementsWeight.model_dump()
 
         rec_size = recommend_size(user_measurements, garment_sizes, measurement_weight)
+        print(f"Recommended size: {rec_size}")
 
         return {"recommendSize": rec_size}
 
