@@ -26,4 +26,8 @@ def recommend_size(user_measurements: dict, garment_sizes: dict, measurement_wei
             best_score = score
             best_size = size
 
+    if best_size is None and best_score == float("inf"):
+        print("No suitable size found. All sizes have infinite fit scores.")
+        return "Recommended size not available."
+
     return best_size
